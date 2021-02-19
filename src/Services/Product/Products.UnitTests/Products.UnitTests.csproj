@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>AlzaTest.Services.Product.UnitTests</RootNamespace>
-    <PackageId>AlzaTest.Services.Product.UnitTests</PackageId>
+    <RootNamespace>AlzaTest.Services.Products.UnitTests</RootNamespace>
+    <PackageId>AlzaTest.Services.Products.UnitTests</PackageId>
     <Version>1.0.0</Version>
     <Authors>Ondrej Piza</Authors>
     <Company>CrazyTown Inc.</Company>
