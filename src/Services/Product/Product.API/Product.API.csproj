@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AlzaTest.Services.Product.API</RootNamespace>
+    <PackageId>AlzaTest.Services.Product.API</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Ondrej Piza</Authors>
+    <Company>CrazyTown Inc.</Company>
+  </PropertyGroup>
+</Project>
