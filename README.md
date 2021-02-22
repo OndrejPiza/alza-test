@@ -32,8 +32,8 @@ This repository is created for job evalutaion purposes only and therefore should
 - As part of the very first startup, database structure is created and demo data of 26 products are inserted. This can be changed before first run in the **InitialMigration** class.
 
 ## Project structure
-**Products.API** - the only runable project containing bussiness logic and controllers
-**Products.Domain** - containing domain specific objects, can be used for sharing DTO classes
-**Products.UnitTests** - tests for Products domain, eg. Products.API and Products.Domain
+- **Products.API** - the only runable project containing bussiness logic and controllers
+- **Products.Domain** - containing domain specific objects, can be used for sharing DTO classes
+- **Products.UnitTests** - tests for Products domain, eg. Products.API and Products.Domain
 
-**AlzaTest.Utils** - Extensions and DTO classes, which should be domain agnostic, therefore widely reusable
+- **AlzaTest.Utils** - Extensions and DTO classes, which should be domain agnostic, therefore widely reusable
