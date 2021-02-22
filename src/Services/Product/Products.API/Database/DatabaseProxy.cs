@@ -46,11 +46,11 @@ namespace AlzaTest.Services.Products.API.Database
 		{
             var sqlQuery = @$"SELECT p.id, p.name, p.img_uri AS imgUri, p.price, p.description FROM dbo.{TableDefinitions.ProductTableName} AS p
                             ORDER BY p.price DESC
-                            OFFSET {pageOffset} ROWS FETCH NEXT {numberOfProducts} ROWS ONLY";
+                            OFFSET @nOffset ROWS FETCH NEXT @nNumberOfProducts ROWS ONLY";
 
             try
             {
-                return await _dbConnection.QueryAsync<Product>(sqlQuery);
+                return await _dbConnection.QueryAsync<Product>(sqlQuery, new { nOffset = pageOffset, nNumberOfProducts = numberOfProducts });
             }
             catch (Exception ex)
             {
@@ -60,15 +60,27 @@ namespace AlzaTest.Services.Products.API.Database
             return Enumerable.Empty<Product>();
         }
 
-        public Task<Product> GetProductAsync(Guid productId)
+        public async Task<Product> GetProductAsync(Guid productId)
         {
-            throw new NotImplementedException();
+            var sqlQuery = @$"SELECT p.id, p.name, p.img_uri AS imgUri, p.price, p.description FROM dbo.{TableDefinitions.ProductTableName} AS p                            
+                            WHERE p.id = @productId";
+
+            try
+            {
+                return await _dbConnection.QuerySingleAsync<Product>(sqlQuery, new { productId });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error during retrieving products");
+            }
+
+            return null;
         }
 
         public async Task<IOperationResult> UpdateProductDescriptionAsync(Guid productId, string newDescription)
         {
-            var sqlQuery = @$"UPDATE dbo.{TableDefinitions.ProductTableName} SET description = '{newDescription}'
-                              WHERE id = '{productId}'";
+            var sqlQuery = @$"UPDATE dbo.{TableDefinitions.ProductTableName} SET description = @newDescription
+                              WHERE id = @productId";
 
             var actionResult = new OperationResult()
             {
@@ -77,7 +89,7 @@ namespace AlzaTest.Services.Products.API.Database
 
             try
             {
-                var rows = await _dbConnection.ExecuteAsync(sqlQuery);
+                var rows = await _dbConnection.ExecuteAsync(sqlQuery, new { productId, newDescription });
 
                 if (rows == 0)
                 {

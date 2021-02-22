@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace AlzaTest.Services.Products.API
 {
@@ -86,6 +87,8 @@ namespace AlzaTest.Services.Products.API
             #endregion
 
             app.UseRouting();
+
+            app.UseSerilogRequestLogging();
 
             app.UseEndpoints(endpoints =>
             {

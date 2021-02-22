@@ -51,5 +51,46 @@ namespace AlzaTest.Services.Products.API.Controllers.V2
                 Products = products.Select(p => p.ToDto()).ToArray()
             });
         }
+
+        [HttpGet("{productId}", Name = "Get product detail")]
+        public async Task<ActionResult<ProductDto>> GetProductAsync([FromRoute] Guid productId)
+        {
+            _logger.LogDebug($"Recieved product detail request for product {productId}");
+            var product = await _databaseProxy.GetProductAsync(productId);
+
+            if (product == null)
+            {
+                var message = $"Product with ID {productId} was not found";
+                _logger.LogDebug(message);
+
+                return NotFound(message);
+            }
+
+            _logger.LogDebug($"Returned product detail response for product {productId}");
+
+            return Ok(product);
+        }
+
+        [HttpPatch("{productId}", Name = "Update product description")]
+        public async Task<ActionResult<Guid>> UpdateProductDescriptionAsync(
+            [FromRoute] Guid productId,
+            [FromBody] string newDescription
+            )
+        {
+            _logger.LogDebug($"Recieved product detail update request for product {productId} and description '{newDescription}'");
+            var operationResult = await _databaseProxy.UpdateProductDescriptionAsync(productId, newDescription);
+
+            if (operationResult.IsValid)
+            {
+                _logger.LogDebug($"Returned product detail update response for product {productId} and description '{newDescription}'");
+
+                return Ok();
+            }
+
+            _logger.LogDebug($"Error during product detail update for product {productId} and description '{newDescription}', error message {operationResult.ErrorMessage}, error code {operationResult.ErrorCode}");
+            _logger.LogError($"Error during product detail update, error message {operationResult.ErrorMessage}, error code {operationResult.ErrorCode}");
+
+            return StatusCode(operationResult.ErrorCode, operationResult.ErrorMessage);
+        }
     }
 }
