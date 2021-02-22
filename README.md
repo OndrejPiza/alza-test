@@ -1,6 +1,9 @@
-<a href="https://www.alza.cz" target="_blank">
-	<img src="https://cdn.alza.cz/Styles/images/svg/alza_cz.svg" width=250>
-</a>
+<div>
+	<a href="https://www.alza.cz" target="_blank">
+		<img src="https://cdn.alza.cz/Styles/images/svg/alza_cz.svg" width=250>
+	</a>
+</div>
+
 # Alza test
 #### implemented by Ondrej Piza
 
@@ -17,8 +20,8 @@ This repository is created for job evalutaion purposes only and therefore should
 - **Dotnet CLI** - navigate to the Products.API folder and execute `dotnet run` command
 
 ## How to run tests
-- ** Visual Studio ** - open solution, go for Products.UnitTests project and call Run tests option
-- ** Dotnet CLI ** - either on solution level (eg. root folder with sln file) or on Product.UnitTests level run `dotnet test` which will run either all tests in solution or all tests in specified test project
+- **Visual Studio** - open solution, go for Products.UnitTests project and call Run tests option
+- **Dotnet CLI** - either on solution level (eg. root folder with sln file) or on Product.UnitTests level run `dotnet test` which will run either all tests in solution or all tests in specified test project
 
 ## Documentation
 - After **Product.API** project is running, there is **Swagger documentation** available under URL** http://localhost:5000/swagger**
