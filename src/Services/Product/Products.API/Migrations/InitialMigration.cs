@@ -29,15 +29,10 @@ namespace AlzaTest.Services.Products.API.Migrations
                 var productId = Guid.NewGuid().ToString();
                 var price = new decimal(priceGenerator.Next(10000, 3000000), 0, 0, false, 4);
                 sb.AppendLine(
-                    $"('{productId}', 'Test product {i}', 'https://cdn.alza.cz/product/{productId}.jpg', {price}, 'Test description product {i}'),");
+                    $"('{productId}', 'Test product {i}', 'https://cdn.alza.cz/product/{productId}.jpg', {price}, 'Test description product {i}'){(i == GeneratedProductsCount ? ";" : "," )}");
             }
-            
-            var sql = sb
-                .Remove(sb.Length - 2, 2)  // Remove new line characters before append semicolon
-                .Append(";")
-                .ToString();
-            
-            Execute.Sql(sql);
+
+			Execute.Sql(sb.ToString());
         }
 
         public override void Down()

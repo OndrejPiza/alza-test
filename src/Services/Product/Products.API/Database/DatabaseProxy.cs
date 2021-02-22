@@ -42,6 +42,24 @@ namespace AlzaTest.Services.Products.API.Database
             return Enumerable.Empty<Product>();
         }
 
+        public async Task<IEnumerable<Product>> GetProductsAsync(int numberOfProducts, int pageOffset)
+		{
+            var sqlQuery = @$"SELECT p.id, p.name, p.img_uri AS imgUri, p.price, p.description FROM dbo.{TableDefinitions.ProductTableName} AS p
+                            ORDER BY p.price DESC
+                            OFFSET {pageOffset} ROWS FETCH NEXT {numberOfProducts} ROWS ONLY";
+
+            try
+            {
+                return await _dbConnection.QueryAsync<Product>(sqlQuery);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error during retrieving products");
+            }
+
+            return Enumerable.Empty<Product>();
+        }
+
         public Task<Product> GetProductAsync(Guid productId)
         {
             throw new NotImplementedException();

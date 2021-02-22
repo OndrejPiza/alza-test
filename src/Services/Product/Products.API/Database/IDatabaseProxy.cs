@@ -10,6 +10,8 @@ namespace AlzaTest.Services.Products.API.Database
     {
         Task<IEnumerable<Product>> GetProductsAsync();
 
+        Task<IEnumerable<Product>> GetProductsAsync(int numberOfProducts, int pageOffset);
+
         Task<Product> GetProductAsync(Guid productId);
 
         Task<IOperationResult> UpdateProductDescriptionAsync(Guid productId, string description);
