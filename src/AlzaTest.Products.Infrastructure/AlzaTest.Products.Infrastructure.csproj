@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	<RootNamespace>AlzaTest.Products.Infrastructure</RootNamespace>
+	<PackageId>AlzaTest.Products.Infrastructure</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Ondrej Piza</Authors>
+	<Company>CrazyTown Inc.</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AlzaTest.Products.Persistence\AlzaTest.Products.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
