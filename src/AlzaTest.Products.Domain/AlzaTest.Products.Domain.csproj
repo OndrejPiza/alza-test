@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>AlzaTest.Products.Domain</RootNamespace>
+    <PackageId>AlzaTest.Products.Domain</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Ondrej Piza</Authors>
+    <Company>CrazyTown Inc.</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.5.1" />
+  </ItemGroup>
+
+</Project>

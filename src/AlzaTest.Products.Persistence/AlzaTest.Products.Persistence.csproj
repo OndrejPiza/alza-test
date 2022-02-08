@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+	<RootNamespace>AlzaTest.Products.Persistence</RootNamespace>
+	<PackageId>AlzaTest.Products.Persistence</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Ondrej Piza</Authors>
+	<Company>CrazyTown Inc.</Company>
+  </PropertyGroup>
+	
+  <ItemGroup>
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.2" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\AlzaTest.Products.Domain\AlzaTest.Products.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
